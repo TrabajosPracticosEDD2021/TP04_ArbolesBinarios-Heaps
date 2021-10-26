@@ -141,7 +141,15 @@ public class ArbolbinarioExt<T> extends ArbolBinario<T> implements ArbolBinarioE
 
 	/** Devuelve la profundidad del árbol */
 	public int profundidad() {
-		return altura();
+		int resultado = 0;
+
+		ListaEnlazadaNoOrdenada<NodoArbolBinario<T>> hojitas = this.hojas();
+
+		for (int i = 0; i < hojitas.size(); i++) {
+			resultado = Math.max(profundidad(hojitas.get(i)), resultado);
+		}
+
+		return resultado;
 	}
 
 }
